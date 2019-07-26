@@ -1,6 +1,6 @@
 env:
   global:
-    - secure: bWVEEB2YDUWqnFlaA27skN3hhdoI7Zdclia/KC+69qtTrs08p/hpgQFuEmeyWKy1t0lJbHYYFM9/1dXD/MOmJmNIXLEVdX6b4WdxdFY/Z4RhkHt8E4OLZpefZpPInDy2xtPmZg6ZDeEhcHji7hx4C+uddC1q579adkkczVTS3ju2tOj7BhaJ5McKf16+jZtgc27rCIo524a36iHrerBABpy5+Hp4RPHC58OhW83RKWgU19gqlVPnijm78+w/uNBYRdRl4YWZgLa7dKhyyOApZXomymZLHTvVA8b9uOFxya7yh5PBT3EC74BfD3iD5fzLt2xad8eHFT4PiBsrjr27NqVAVnHkUXqEOy9OEKu15LBTkr4P1puBA7PNNDa85uXj3PBUenMX1qjjZpkcM/AbOTPPdkjuK0yybA3e5NLHrxX2FEJTSW+MG7V8bVPZPqzd6wwc8hQ9kRHE6u3G6Kyq+S565CR0X7zAoBnXZmMb/+R555P7ahNTh5O9wlIPRJzLMhickuB2Ofa7NtQ0KbNjQKuoLNZkC/NVvn5Fy2Wh5gxyOnrhHT/Fr+DgwDdKV0xVOilF/zl0OInzjMnN4NzlaU1tQ24te8hPFMXX+W2oahNIjZ7qMcc52BruuaPduy/sc3jAVgd1D8u6zWi091L8xyCtxs4m1Y7xnezgLsVFQuM=
+    - secure: teroUa7I76pfMxknN56LjaXgBNofFbK8seYn4lQFA6zE8V43XfZf7k26RG+8FELm7MIiCG6fugWKFj3nQ+5Ib2ZJMZLsU6Fcp6qTCfXIz9cH6CwAbh6sdORsSf3WxxGaYsP4OwCOAQuW+TlEnq5jig0zlm7I08FguTlAOpDQoh4TyzpRlySp07aLRzz4A/DS4YAf5EsdCifyrGHKVgPpOnQgfCXO4yPDqP7JNorUHPkemYIjtVYIowMbDoT3cYFCu6jXiKeCwpUihU1KlYxKcHZcxoEnspx/1MgqyVPr4vLzSBBR75CNAUdIQmIne05F9VpF7UYmtl2qAb4RV45OY0mQgKIKyliUHI4dvf7nfl6zsLoBOnnloeuAqoI7WBd8NjLnoqv5ondmV2KQ1fzSVWhEnQ5Lbt/5BLLRcRkxsGVrSNz0iE2em0/Hw9o7gibD+o6zXXSoomJAxbwd/Zc2VC3M+Zi5wDlAbrgoue0Sv7POhnB1WsrLhw3DbZdl85SzpoSdJosTU8q+UXDZkyPH9L0Mnue+mXiZjgEynuaNk5UAIs1FVcv94nOr3HiaoTPqKvVYA/EUppk1WPvbnqIRWp5ZUDp+kFFKHIVHJm3cR+xiCDxALYYCTs6bsH4uppNSajNk9Y2TdvXG6qEzw/YuEBAKj8plI/9MkxbZLvfQwB4=
     - DOCKER_USER="wxdlong"
     - IMAGE="jdk"
 
@@ -12,7 +12,8 @@ services:
 
 before_install:
   - echo "before install"
-  - 'curl -L -b "oraclelicense=a" -O https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz'
+  - 'wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz'
+  - ls -lth
 
 install:
   - echo "install"
