@@ -1,2 +1,4 @@
+from alipine as builder
+RUN apk
 from scratch
-ADD jdk-10.0.1_linux-x64_bin.tar.gz /jdk-10.0.1_linux-x64_bin.tar.gz
+ADD jdk-8u201-linux-x64.tar.gz /jdk-8u201-linux-x64.tar.gz
