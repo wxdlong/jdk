@@ -11,10 +11,12 @@ services:
 
 
 before_install:
-  - docker build -t ${IMAGE} .
+  - echo "before install"
+  - wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_linux-x64_bin.tar.gz
 
 install:
   - echo "install"
+  - docker build -t ${DOCKER_USER}/${IMAGE} .
 
 script:
   - echo "$DOCKER_PWD" | docker login -u "${DOCKER_USER}" --password-stdin
