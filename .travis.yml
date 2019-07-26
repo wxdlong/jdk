@@ -1,0 +1,25 @@
+env:
+  global:
+    - secure: bWVEEB2YDUWqnFlaA27skN3hhdoI7Zdclia/KC+69qtTrs08p/hpgQFuEmeyWKy1t0lJbHYYFM9/1dXD/MOmJmNIXLEVdX6b4WdxdFY/Z4RhkHt8E4OLZpefZpPInDy2xtPmZg6ZDeEhcHji7hx4C+uddC1q579adkkczVTS3ju2tOj7BhaJ5McKf16+jZtgc27rCIo524a36iHrerBABpy5+Hp4RPHC58OhW83RKWgU19gqlVPnijm78+w/uNBYRdRl4YWZgLa7dKhyyOApZXomymZLHTvVA8b9uOFxya7yh5PBT3EC74BfD3iD5fzLt2xad8eHFT4PiBsrjr27NqVAVnHkUXqEOy9OEKu15LBTkr4P1puBA7PNNDa85uXj3PBUenMX1qjjZpkcM/AbOTPPdkjuK0yybA3e5NLHrxX2FEJTSW+MG7V8bVPZPqzd6wwc8hQ9kRHE6u3G6Kyq+S565CR0X7zAoBnXZmMb/+R555P7ahNTh5O9wlIPRJzLMhickuB2Ofa7NtQ0KbNjQKuoLNZkC/NVvn5Fy2Wh5gxyOnrhHT/Fr+DgwDdKV0xVOilF/zl0OInzjMnN4NzlaU1tQ24te8hPFMXX+W2oahNIjZ7qMcc52BruuaPduy/sc3jAVgd1D8u6zWi091L8xyCtxs4m1Y7xnezgLsVFQuM=
+    - DOCKER_USER="wxdlong"
+    - IMAGE="jdk"
+
+
+
+services:
+  - docker
+
+
+before_install:
+  - docker build -t ${IMAGE} .
+
+install:
+  - echo "install"
+
+script:
+  - echo "$DOCKER_PWD" | docker login -u "${DOCKER_USER}" --password-stdin
+  - docker images
+  - docker push ${IMAGE}
+
+after_success:
+  - echo "after_success"
