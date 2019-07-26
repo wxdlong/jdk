@@ -12,17 +12,17 @@ services:
 
 before_install:
   - echo "before install"
-  - 'curl -L -b "oraclelicense=a" -O https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz'
+  - 'wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz'
   - ls -lth
 
 install:
   - echo "install"
-  - docker build -t ${DOCKER_USER}/${IMAGE} .
+  - cat jdk-10.0.2_linux-x64_bin.tar.gz | docker import  -t ${DOCKER_USER}/${IMAGE}
 
 script:
   - echo "$DOCKER_PWD" | docker login -u "${DOCKER_USER}" --password-stdin
   - docker images
-  - docker push ${IMAGE}
+  - docker push ${DOCKER_USER}/${IMAGE}
 
 after_success:
   - echo "after_success"
