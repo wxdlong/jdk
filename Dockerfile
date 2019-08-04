@@ -1,6 +1,22 @@
-from alpine as builder
-WORKDIR /root/
-RUN wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.tar.gz
+from golang:alpine as builder
+
+RUN apk add --no-cache git build-base libstdc++ musl
+ENV GO111MODULE on
+ENV CGO_ENABLED 0 
+
+RUN mkdir -p /go/src/github.com/gohugoio && \
+    cd /go/src/github.com/gohugoio && \
+    git clone https://github.com/gohugoio/hugo.git && \
+    cd hugo && \
+    go install -v -ldflags '-extldflags -static -s -w' -tags extended
+
+RUN ls -lth /go/bin
+
+RUN ldd /go/bin/hugo
 
 from scratch
-copy  --from=builder /root/jdk-10.0.2_linux-x64_bin.tar.gz .
+
+COPY --from=builder /go/bin/hugo /hugo
+
+WORKDIR /code
+CMD ["/hugo"]
