@@ -21,7 +21,7 @@ install:
 script:
   - echo "$DOCKER_PWD" | docker login -u "${DOCKER_USER}" --password-stdin
   - docker images
-  - docker push ${DOCKER_USER}/${IMAGE}
+  - docker push ${DOCKER_USER}/hugo
 
 after_success:
   - echo "after_success"
