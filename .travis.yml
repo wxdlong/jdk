@@ -2,7 +2,7 @@ env:
   global:
     - secure: teroUa7I76pfMxknN56LjaXgBNofFbK8seYn4lQFA6zE8V43XfZf7k26RG+8FELm7MIiCG6fugWKFj3nQ+5Ib2ZJMZLsU6Fcp6qTCfXIz9cH6CwAbh6sdORsSf3WxxGaYsP4OwCOAQuW+TlEnq5jig0zlm7I08FguTlAOpDQoh4TyzpRlySp07aLRzz4A/DS4YAf5EsdCifyrGHKVgPpOnQgfCXO4yPDqP7JNorUHPkemYIjtVYIowMbDoT3cYFCu6jXiKeCwpUihU1KlYxKcHZcxoEnspx/1MgqyVPr4vLzSBBR75CNAUdIQmIne05F9VpF7UYmtl2qAb4RV45OY0mQgKIKyliUHI4dvf7nfl6zsLoBOnnloeuAqoI7WBd8NjLnoqv5ondmV2KQ1fzSVWhEnQ5Lbt/5BLLRcRkxsGVrSNz0iE2em0/Hw9o7gibD+o6zXXSoomJAxbwd/Zc2VC3M+Zi5wDlAbrgoue0Sv7POhnB1WsrLhw3DbZdl85SzpoSdJosTU8q+UXDZkyPH9L0Mnue+mXiZjgEynuaNk5UAIs1FVcv94nOr3HiaoTPqKvVYA/EUppk1WPvbnqIRWp5ZUDp+kFFKHIVHJm3cR+xiCDxALYYCTs6bsH4uppNSajNk9Y2TdvXG6qEzw/YuEBAKj8plI/9MkxbZLvfQwB4=
     - DOCKER_USER="wxdlong"
-    - IMAGE="jdk"
+    - IMAGE="hugo"
 
 
 
@@ -21,7 +21,7 @@ install:
 script:
   - echo "$DOCKER_PWD" | docker login -u "${DOCKER_USER}" --password-stdin
   - docker images
-  - docker push ${DOCKER_USER}/hugo
+  - docker push ${DOCKER_USER}/${IMAGE}
 
 after_success:
   - echo "after_success"
