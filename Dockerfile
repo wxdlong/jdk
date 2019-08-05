@@ -1,8 +1,7 @@
 from golang:alpine as builder
 
-RUN apk add --no-cache git build-base libsass-dev
+RUN apk add --no-cache git build-base
 ENV GO111MODULE on
-ENV CGO_ENABLED 0 
 
 RUN mkdir -p /go/src/github.com/gohugoio && \
     cd /go/src/github.com/gohugoio && \
