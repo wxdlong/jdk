@@ -11,7 +11,7 @@ RUN mkdir -p /go/src/github.com/gohugoio && \
 
 RUN ls -lth /go/bin
 
-RUN ldd /go/bin/hugo
+RUN ldd /go/bin/hugo || echo hello 
 
 from scratch
 
